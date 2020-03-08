@@ -4,6 +4,7 @@ function route(path, handle) {
     return handle[path]();
   } else {
     console.log("No hay handler definido para " + path);
+    return "Error 404";
   }
 }
 

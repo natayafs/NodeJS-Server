@@ -5,16 +5,16 @@ function iniciar(route, handle){
 	function onRequest(request, response){
     var pathname = url.parse(request.url).pathname;
 		console.log("Request a "+ pathname + "recibido");
-		console.log("Request recibido");
 
 		route(pathname, handle);
 
     response.writeHead(200, {"Content-Type": "text/html"});
-		response.write("Holis");
+		var content = route(pathname, handle);
+		response.write(content);
+
 		response.end();
-		console.log("Request terminado");
-  }
+	}
     http.createServer(onRequest).listen(8080);
-    console.log("Servidor inicial");
+    console.log("Servidor iniciado");
 }
 export.iniciar = iniciar;
