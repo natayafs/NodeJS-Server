@@ -1,5 +1,9 @@
 function iniciar () {
   console.log("Invocando el handler de iniciar");
+
+  var horaInicio = new Date().getTime();
+  while (new Date().getTime() < horaInicio + 1000);
+
   return "Iniciar";
 }
 
