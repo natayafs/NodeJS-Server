@@ -1,15 +1,21 @@
-function iniciar () {
+var exec = require("child_process").exec;
+
+function iniciar (response) {
   console.log("Invocando el handler de iniciar");
-
-  var horaInicio = new Date().getTime();
-  while (new Date().getTime() < horaInicio + 1000);
-
-  return "Iniciar";
+  exec("find /",
+    {timeout: 10000, max Buffer:20000*1024},
+    function (error, stdout, stderr) {
+      response.writeHead(200, {"Content-Type": "text-html"});
+      response.write(stdout);
+      responde.end();
+    });
 }
 
-function subir() {
+function subir(response) {
   console.log("Invocando el handler de subir");
-  return "Subir";
+  response.writeHead(200, {"Content-Type": "text-html"});
+  response.write("Subir");
+  responde.end();
 }
 
 export.iniciar = iniciar;
